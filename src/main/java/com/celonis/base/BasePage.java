@@ -10,4 +10,6 @@ public abstract class BasePage {
     protected BasePage(WebDriver driver) {
         initElements(new AjaxElementLocatorFactory(driver, configuration().timeout()), this);
     }
+
+    public abstract boolean isLoaded();
 }
