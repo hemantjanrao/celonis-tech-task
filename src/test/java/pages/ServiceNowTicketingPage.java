@@ -18,8 +18,8 @@ public class ServiceNowTicketingPage extends BasePage {
         this.driver = driver;
     }
 
-    @FindBy(css = "div[process-model='processGraph.model']")
-    private WebElement processGraph;
+    @FindBy(css = "g.canvas")
+    private WebElement baseLineGraph;
 
     @FindBy(css = "div[ce-process-panel]")
     private WebElement processPanel;
@@ -36,22 +36,38 @@ public class ServiceNowTicketingPage extends BasePage {
     @FindBy(css = "div.pe-standalone__control--connections")
     private WebElement connectionsControl;
 
+    @FindBy(css = "div[title='KPIs']")
+    private WebElement kpiIcon;
+
+    @FindBy(css = "div[title='Grouping']")
+    private WebElement groupingIcon;
+
+    @FindBy(css = "div[title='Hide activity']")
+    private WebElement hideActivityIcon;
+
+    @FindBy(css = "div[data-testing-uid='analysisMenu-burgerMenu-dropDown']")
+    private WebElement burgerMenuDropdown;
+
     @Override
     @Step("Is page loaded?")
     public boolean isLoaded() {
-        return WebUtil.isDisplayed(driver, processGraph);
+        return WebUtil.isDisplayed(driver, baseLineGraph);
     }
 
     @Override
     @Step("Presence of all the elements on the page")
     public boolean isPageElementsLoaded() {
         ArrayList<WebElement> elementsList = new ArrayList<>();
-        elementsList.add(processGraph);
+        elementsList.add(baseLineGraph);
         elementsList.add(processPanel);
-        elementsList.add(connectionsControl);
         elementsList.add(settingsControl);
         elementsList.add(zoomControls);
         elementsList.add(activitiesControl);
+        elementsList.add(connectionsControl);
+        elementsList.add(kpiIcon);
+        elementsList.add(groupingIcon);
+        elementsList.add(hideActivityIcon);
+        elementsList.add(burgerMenuDropdown);
 
         return WebUtil.verifyElements(elementsList);
     }
