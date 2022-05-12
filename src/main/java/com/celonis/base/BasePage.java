@@ -12,4 +12,5 @@ public abstract class BasePage {
     }
 
     public abstract boolean isLoaded();
+    public abstract boolean isPageElementsLoaded();
 }

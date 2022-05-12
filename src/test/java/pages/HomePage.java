@@ -19,12 +19,6 @@ public class HomePage extends BasePage {
         this.driver = driver;
     }
 
-    @Override
-    @Step("Is page loaded?")
-    public boolean isLoaded() {
-        return headerLayout.isDisplayed();
-    }
-
     @FindBy(css = ".ce-main-layout__header")
     private WebElement headerLayout;
 
@@ -34,6 +28,16 @@ public class HomePage extends BasePage {
     @FindBy (css = "a[data-testing-uid='ceAppSwitcher-process-mining-link']")
     private WebElement linkProcessAnalytics;
 
+    @Override
+    @Step("Is page loaded?")
+    public boolean isLoaded() {
+        return headerLayout.isDisplayed();
+    }
+
+    @Override
+    public boolean isPageElementsLoaded() {
+        return false;
+    }
 
     @Step("Navigate to Process Analytics")
     public void navigateToProcessAnalytics(){

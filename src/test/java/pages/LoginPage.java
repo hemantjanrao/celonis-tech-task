@@ -19,12 +19,6 @@ public class LoginPage extends BasePage {
         this.driver = driver;
     }
 
-    @Override
-    @Step("Is page loaded?")
-    public boolean isLoaded() {
-        return btnSignIn.isDisplayed();
-    }
-
     @FindBy(id = "ce-input-0")
     private WebElement inputEmail;
 
@@ -36,6 +30,18 @@ public class LoginPage extends BasePage {
 
     @FindBy(css = "span.ce-validation__hint")
     private WebElement lblValidationMessage;
+
+    @Override
+    @Step("Is page loaded?")
+    public boolean isLoaded() {
+        return btnSignIn.isDisplayed();
+    }
+
+    @Override
+    @Step("Presence of all the elements on the page")
+    public boolean isPageElementsLoaded() {
+        return false;
+    }
 
     @Step("Login to application")
     public void login(String email, String password){

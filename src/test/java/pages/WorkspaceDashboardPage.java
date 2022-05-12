@@ -13,12 +13,6 @@ public class WorkspaceDashboardPage extends BasePage {
         super(driver);
     }
 
-    @Override
-    @Step("Is page loaded?")
-    public boolean isLoaded() {
-        return sidebar.isDisplayed();
-    }
-
     @FindBy(css = "workspaces-sidebar .ce-burger-content")
     private WebElement sidebar;
 
@@ -27,6 +21,18 @@ public class WorkspaceDashboardPage extends BasePage {
 
     @FindBy(xpath = "//a[starts-with(@data-testing-uid,'analysisListComponent-analysisName')]")
     private WebElement analysisName;
+
+    @Override
+    @Step("Is page loaded?")
+    public boolean isLoaded() {
+        return sidebar.isDisplayed();
+    }
+
+    @Override
+    @Step("Presence of all the elements on the page")
+    public boolean isPageElementsLoaded() {
+        return false;
+    }
 
     @Step("Navigate to the workspace")
     public void navigateTo(String workspaceName){
