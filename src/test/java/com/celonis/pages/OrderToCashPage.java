@@ -1,4 +1,4 @@
-package pages;
+package com.celonis.pages;
 
 import com.celonis.base.BasePage;
 import com.celonis.util.WebUtil;
@@ -10,6 +10,11 @@ import org.openqa.selenium.support.FindBy;
 public class OrderToCashPage extends BasePage {
 
     private final WebDriver driver;
+
+    public OrderToCashPage(WebDriver driver) {
+        super(driver);
+        this.driver = driver;
+    }
 
     @FindBy(css = "div[data-testing-uid='content-sheet-analysis']")
     private WebElement contentSheetAnalysis;
@@ -24,10 +29,5 @@ public class OrderToCashPage extends BasePage {
     @Step("Presence of all the elements on the page")
     public boolean isPageElementsLoaded() {
         return WebUtil.isDisplayed(driver, contentSheetAnalysis);
-    }
-
-    public OrderToCashPage(WebDriver driver) {
-        super(driver);
-        this.driver = driver;
     }
 }

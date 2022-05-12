@@ -1,14 +1,11 @@
-package pages;
+package com.celonis.pages;
 
 import com.celonis.base.BasePage;
+import com.celonis.util.WebUtil;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class HomePage extends BasePage {
 
@@ -31,7 +28,7 @@ public class HomePage extends BasePage {
     @Override
     @Step("Is page loaded?")
     public boolean isLoaded() {
-        return headerLayout.isDisplayed();
+        return WebUtil.isDisplayed(driver, headerLayout);
     }
 
     @Override
@@ -42,8 +39,7 @@ public class HomePage extends BasePage {
     @Step("Navigate to Process Analytics")
     public void navigateToProcessAnalytics(){
         linkMore.click();
-        WebDriverWait webDriverWait = new WebDriverWait(this.driver, Duration.ofSeconds(20));
-        webDriverWait.until(ExpectedConditions.visibilityOf(linkProcessAnalytics));
+        WebUtil.isDisplayed(driver, linkProcessAnalytics);
         linkProcessAnalytics.click();
     }
 }

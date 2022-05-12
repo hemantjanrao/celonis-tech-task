@@ -1,6 +1,7 @@
-package pages;
+package com.celonis.pages;
 
 import com.celonis.base.BasePage;
+import com.celonis.util.WebUtil;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,8 +10,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class WorkspaceDashboardPage extends BasePage {
 
+    private final WebDriver driver;
+
     public WorkspaceDashboardPage(WebDriver driver) {
         super(driver);
+        this.driver = driver;
     }
 
     @FindBy(css = "workspaces-sidebar .ce-burger-content")
@@ -25,7 +29,7 @@ public class WorkspaceDashboardPage extends BasePage {
     @Override
     @Step("Is page loaded?")
     public boolean isLoaded() {
-        return sidebar.isDisplayed();
+        return WebUtil.isDisplayed(driver, sidebar);
     }
 
     @Override

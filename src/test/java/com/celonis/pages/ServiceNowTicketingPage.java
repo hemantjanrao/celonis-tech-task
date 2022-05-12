@@ -1,4 +1,4 @@
-package pages;
+package com.celonis.pages;
 
 import com.celonis.base.BasePage;
 import com.celonis.util.WebUtil;
@@ -17,6 +17,9 @@ public class ServiceNowTicketingPage extends BasePage {
         super(driver);
         this.driver = driver;
     }
+
+    @FindBy(css = "div[process-model='processGraph.model']")
+    private WebElement processMap;
 
     @FindBy(css = "g.canvas")
     private WebElement baseLineGraph;
@@ -45,9 +48,6 @@ public class ServiceNowTicketingPage extends BasePage {
     @FindBy(css = "div[title='Hide activity']")
     private WebElement hideActivityIcon;
 
-    @FindBy(css = "div[data-testing-uid='analysisMenu-burgerMenu-dropDown']")
-    private WebElement burgerMenuDropdown;
-
     @Override
     @Step("Is page loaded?")
     public boolean isLoaded() {
@@ -58,6 +58,7 @@ public class ServiceNowTicketingPage extends BasePage {
     @Step("Presence of all the elements on the page")
     public boolean isPageElementsLoaded() {
         ArrayList<WebElement> elementsList = new ArrayList<>();
+        elementsList.add(processMap);
         elementsList.add(baseLineGraph);
         elementsList.add(processPanel);
         elementsList.add(settingsControl);
@@ -67,7 +68,6 @@ public class ServiceNowTicketingPage extends BasePage {
         elementsList.add(kpiIcon);
         elementsList.add(groupingIcon);
         elementsList.add(hideActivityIcon);
-        elementsList.add(burgerMenuDropdown);
 
         return WebUtil.verifyElements(elementsList);
     }

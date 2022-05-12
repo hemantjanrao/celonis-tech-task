@@ -1,13 +1,13 @@
-package tests;
+package com.celonis.tests;
 
 import com.celonis.base.BasePage;
 import com.celonis.base.BaseTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.WorkspaceDashboardPage;
-import pages.WorkspaceFactory;
+import com.celonis.pages.HomePage;
+import com.celonis.pages.LoginPage;
+import com.celonis.pages.WorkspaceDashboardPage;
+import com.celonis.pages.WorkspaceFactory;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

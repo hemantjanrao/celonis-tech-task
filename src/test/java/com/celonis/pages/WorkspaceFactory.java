@@ -1,4 +1,4 @@
-package pages;
+package com.celonis.pages;
 
 import com.celonis.base.BasePage;
 import org.openqa.selenium.WebDriver;

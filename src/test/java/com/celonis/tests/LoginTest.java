@@ -1,9 +1,9 @@
-package tests;
+package com.celonis.tests;
 
 import com.celonis.base.BaseTest;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.LoginPage;
+import com.celonis.pages.HomePage;
+import com.celonis.pages.LoginPage;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

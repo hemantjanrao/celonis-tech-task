@@ -1,14 +1,11 @@
-package pages;
+package com.celonis.pages;
 
 import com.celonis.base.BasePage;
+import com.celonis.util.WebUtil;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class LoginPage extends BasePage {
 
@@ -34,7 +31,7 @@ public class LoginPage extends BasePage {
     @Override
     @Step("Is page loaded?")
     public boolean isLoaded() {
-        return btnSignIn.isDisplayed();
+        return WebUtil.isDisplayed(driver, btnSignIn);
     }
 
     @Override
@@ -52,9 +49,7 @@ public class LoginPage extends BasePage {
 
     @Step("Get validation message")
     public String getValidationMessage(){
-        WebDriverWait webDriverWait = new WebDriverWait(this.driver, Duration.ofSeconds(20));
-        webDriverWait.until(ExpectedConditions.visibilityOf(lblValidationMessage));
+        WebUtil.isDisplayed(driver, lblValidationMessage);
         return lblValidationMessage.getText();
     }
-
 }
